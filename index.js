@@ -21,7 +21,7 @@ app.get("/", function (req, res) {
 
 app.get("/api/:date?", function(req,res){
   try {
-    const date = new Date(parseInt(req.params.date) || req.params.date)
+    const date = new Date(Number(req.params.date) || req.params.date)
     console.log(date);
 
     res.json({
