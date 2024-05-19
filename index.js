@@ -26,7 +26,7 @@ app.get("/api/:date?", function(req,res){
 
     res.json({
       unix: date.getTime().toString(),
-      utc: date.toString()
+      utc: date.toUTCString()
     })
   } catch (error) {
     console.log(error);
