@@ -20,8 +20,10 @@ app.get("/", function (req, res) {
 
 
 app.get("/api/:date?", function(req,res){
+  var date_string = Number(req.params.date) || req.params.date
+  if(req.params.date=="") date_string = Number(Date.now());
   try {
-    const date = new Date(Number(req.params.date) || req.params.date || Date.now())
+    const date = new Date(date_string)
     console.log(date);
 
     res.json({
