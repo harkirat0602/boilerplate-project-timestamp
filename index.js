@@ -19,6 +19,21 @@ app.get("/", function (req, res) {
 });
 
 
+app.get("/api/:date?", function(req,res){
+  try {
+    const date = new Date(parseInt(req.params.date) || req.params.date)
+    console.log(date);
+
+    res.json({
+      unix: date.getTime().toString(),
+      utc: date.toString()
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({error:"Invalid Date"})
+  }
+})
+
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
