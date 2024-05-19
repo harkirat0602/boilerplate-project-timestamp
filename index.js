@@ -21,14 +21,15 @@ app.get("/", function (req, res) {
 
 app.get("/api/:date?", function(req,res){
   var date_string = Number(req.params.date) || req.params.date
-  if(req.params.date=="") date_string = Number(Date.now());
+  console.log(req.params.date);
+  if(!req.params.date) { date_string = Number(Date.now()); console.log("Was Empty")}
   try {
     const date = new Date(date_string)
     console.log(date);
     if(date=="Invalid Date") {res.json({error: "Invalid Date"}); return; }
 
     res.json({
-      unix: date.getTime().toString(),
+      unix: date.getTime(),
       utc: date.toUTCString()
     })
   } catch (error) {
