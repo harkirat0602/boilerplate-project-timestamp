@@ -32,7 +32,7 @@ app.get("/api/:date?", function(req,res){
     })
   } catch (error) {
     console.log(error);
-    res.status(400).json({error:"Invalid Date"})
+    res.json({error: error})
   }
 })
 
